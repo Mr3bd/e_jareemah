@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "999817195535",
+    "project_id": "e-jareemah",
+    "storage_bucket": "e-jareemah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999817195535:android:3ab35ca2508becc798b37a",
+        "android_client_info": {
+          "package_name": "com.retixn.e_jareemah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "999817195535-birr0hrofbnqc528cd3kc9b3c5oo5ri9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.retixn.e_jareemah",
+            "certificate_hash": "28345b8ae5fd9e2e85298ebcd865f593e053432e"
+          }
+        },
+        {
+          "client_id": "999817195535-fdhltcuu3rp39319bhndk29s7k0bl62o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.retixn.e_jareemah",
+            "certificate_hash": "f4984592cf060799f52428b29355a28d50ffcbd3"
+          }
+        },
+        {
+          "client_id": "999817195535-0j2rgq1cak18rh8tiq7bs4eku0v5e5ff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAj2oxszsUO1RYA5c6miIaiwMRq-jSVuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "999817195535-0j2rgq1cak18rh8tiq7bs4eku0v5e5ff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

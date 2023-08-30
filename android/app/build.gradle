@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
-    namespace 'com.example.e_jareemah'
+    namespace 'com.retixn.e_jareemah'
 
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
@@ -52,7 +52,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.e_jareemah"
+        applicationId "com.retixn.e_jareemah"
         minSdkVersion 20
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
@@ -80,7 +80,7 @@ android {
                     'proguard-rules.pro'
         }
     }
-    namespace 'com.example.e_jareemah'
+    namespace 'com.retixn.e_jareemah'
 }
 
 flutter {

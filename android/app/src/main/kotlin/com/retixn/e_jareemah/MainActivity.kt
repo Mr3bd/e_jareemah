@@ -1,4 +1,4 @@
-package com.example.e_jareemah
+package com.retixn.e_jareemah
 
 import io.flutter.embedding.android.FlutterActivity
 
