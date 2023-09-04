@@ -1,3 +1,4 @@
+import 'package:e_jareemah/App/Utilities/Constants/AppStyles.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,11 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../../Services/AuthenticationService/Core/manager.dart';
 import '../../../Utilities/Constants/AppColors.dart';
+import '../../../Utilities/Widgets/app_logo.dart';
+import '../../Dashboard/binding/dashboard_binding.dart';
+import '../../Dashboard/view/dashboard_view.dart';
+import '../../SignIn/binding/signin_binding.dart';
+import '../../SignIn/view/signin_view.dart';
 
 class SplashController extends GetxController {
   final AuthenticationManager _authmanager = Get.put(AuthenticationManager());
@@ -18,24 +24,16 @@ class SplashController extends GetxController {
   Future<void> onInit() async {
     await initializeSettings();
     Future.delayed(
-        Duration(seconds: _authmanager.isLogged.value == true ? 1 : 5), () {
-      // if (_authmanager.isLogged.value) {
-      //   if (_authmanager.autisticPatients.isEmpty) {
-      //     ABSurveyBinding().dependencies();
-      //     Get.offAll(
-      //       () => InstructionsView(),
-      //     );
-      //     return;
-      //   }
-
-      //   DashboardBinding().dependencies();
-      //   Get.offAll(() => DashboardView());
-      //   return;
-      // } else {
-      //   SignInBinding().dependencies();
-      //   Get.offAll(() => SignInView());
-      //   return;
-      // }
+        Duration(seconds: _authmanager.isLogged.value == true ? 1 : 3), () {
+      if (_authmanager.isLogged.value) {
+        DashboardBinding().dependencies();
+        Get.offAll(() => const DashboardView());
+        return;
+      } else {
+        SignInBinding().dependencies();
+        Get.offAll(() => const SignInView());
+        return;
+      }
     });
 
     super.onInit();
@@ -50,40 +48,14 @@ class SplashController extends GetxController {
     return Scaffold(
         backgroundColor: AppColors.primaryBackground,
         body: Stack(
-          children: <Widget>[
-            Center(
-                child: SvgPicture.asset(
-              'assets/svg/logo.svg',
-              width: Get.width * 0.35,
-              height: Get.width * 0.35,
-            )),
+          children: [
+            const Center(child: AppLogo()),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 45.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'by'.tr,
-                      style: Get.textTheme.headline5!.copyWith(
-                          fontWeight: FontWeight.w100,
-                          color: AppColors.darkGrey.withOpacity(0.4)),
-                    ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
-                    Text(
-                      'Abdullrahman & Layan',
-                      style: Get.textTheme.headline5!.copyWith(
-                          color: AppColors.darkGrey.withOpacity(0.6),
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
+              child: LinearProgressIndicator(
+                backgroundColor: AppColors.primary.withOpacity(0.2),
               ),
-            ),
+            )
           ],
         ));
   }

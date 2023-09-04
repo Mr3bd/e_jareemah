@@ -30,7 +30,7 @@ Future<void> main() async {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 10),
-            Icon(
+            const Icon(
               Icons.error,
               color: AppColors.red,
             ),
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       showPerformanceOverlay: false,
       title: 'title'.tr,
-      home: SplashView(),
+      home: const SplashView(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

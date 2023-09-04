@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../Utilities/Constants/AppColors.dart';
 
-
 class SettingsService extends GetxService {
-
   Future<SettingsService> init() async {
     return this;
   }
@@ -40,7 +38,7 @@ class SettingsService extends GetxService {
         secondary: AppColors.secondary,
       ),
       fontFamily:
-          getLocale().toString().startsWith('ar') ? 'NotoKufiArabic' : 'Roboto',
+          getLocale().toString().startsWith('ar') ? 'Vazirmatn' : 'Roboto',
       textTheme: const TextTheme(
         displayLarge: TextStyle(
           fontSize: 57.0,

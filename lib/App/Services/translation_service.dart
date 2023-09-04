@@ -9,29 +9,29 @@ import '../Utilities/Lang/en.dart';
 class TranslationService extends Translations {
   GetStorage localStorage = GetStorage();
 
-  static final locale = const Locale('en', 'US');
-  static final fallbackLocale = const Locale('en', 'US');
+  static const locale = Locale('ar', 'JO');
+  static const fallbackLocale = Locale('ar', 'JO');
 
   static final langs = [
-    'ar_SA',
+    'ar_JO',
     'en_US',
   ];
 
   static final locales = [
-    const Locale('ar', 'SA'),
+    const Locale('ar', 'JO'),
     const Locale('en', 'US'),
   ];
 
   @override
   Map<String, Map<String, String>> get keys => {
-        'ar_SA': ar,
+        'ar_JO': ar,
         'en_US': en,
       };
 
   void changeLocale(String lang) async {
     if (lang == langs[0]) {
       Get.updateLocale(locales[0]);
-      await localStorage.write('language', 'ar_SA');
+      await localStorage.write('language', 'ar_JO');
     } else {
       Get.updateLocale(locales[1]);
       await localStorage.write('language', 'en_US');
@@ -40,12 +40,12 @@ class TranslationService extends Translations {
 
   Locale getLocale() {
     String? currentLocale = localStorage.read('language');
-    if (currentLocale == null || currentLocale == 'en_US') return locales[1];
+    if (currentLocale == null || currentLocale == 'ar_JO') return locales[0];
 
     return locales[0];
   }
 
   bool isLocaleArabic() {
-    return Get.locale == const Locale('ar', 'SA');
+    return Get.locale == const Locale('ar', 'JO');
   }
 }
