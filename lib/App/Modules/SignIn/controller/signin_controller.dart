@@ -11,15 +11,25 @@ class SignInController extends GetxController {
   RxBool isLoading = false.obs;
 
   Future<void> login() async {
-    String phoneNumber = nIdEditingController.text.trim();
-    if (phoneNumber[0] == '0') {
-      phoneNumber = '+962${phoneNumber.substring(1)}';
-    } else {
-      appTools.showErrorSnackBar('enterValidPhone'.tr);
+    if (nIdEditingController.text.isEmpty) {
+      appTools.showErrorSnackBar('enterNationalIdNumber'.tr);
+      return;
+    } else if (passwordEditingController.text.isEmpty) {
+      appTools.showErrorSnackBar('enterPassword'.tr);
       return;
     }
-    await authManager.firebaseServices
-        .signInWithPhone(RegisterDTO(phone: phoneNumber), false);
+    isLoading.value = true;
+    String? phone = await authManager.firebaseServices.getUserPhone(
+        nIdEditingController.text,
+        appTools.encryptPassword(passwordEditingController.text));
+
+    if (phone != null) {
+      await authManager.firebaseServices
+          .signInWithPhone(RegisterDTO(phone: phone), false);
+    } else {
+      isLoading.value = false;
+      appTools.showErrorSnackBar('invalidData'.tr);
+    }
   }
 
   @override

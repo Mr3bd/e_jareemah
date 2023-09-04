@@ -2,6 +2,8 @@ import 'package:e_jareemah/App/Modules/SignUp/binding/sign_up_binding.dart';
 import 'package:e_jareemah/App/Modules/SignUp/view/sign_up_view.dart';
 import 'package:e_jareemah/App/Services/AuthenticationService/Core/manager.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/app_logo.dart';
+import 'package:e_jareemah/App/Utilities/Widgets/custom_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Utilities/Constants/AppColors.dart';
@@ -17,7 +19,7 @@ class SignInView extends GetView<SignInController> {
           appTools.unFocusKeyboard(context);
         },
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.primaryBackground,
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(36.0),
@@ -113,59 +115,50 @@ class SignInView extends GetView<SignInController> {
                   const SizedBox(
                     height: 16.0,
                   ),
-                  const Row(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('دخول كمشرف'),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.lock_person,
+                            color: AppColors.primary.withOpacity(0.5),
+                          ),
+                          const SizedBox(
+                            width: 8.0,
+                          ),
+                          const Text('جميع بياناتك مشفرة'),
+                        ],
+                      ),
+                      Text(
+                        'دخول كمشرف',
+                        style: Get.textTheme.labelLarge!
+                            .copyWith(color: AppColors.primary),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 32.0),
-                  SizedBox(
-                    width: Get.width * 0.6,
-                    height: Get.width * 0.1,
-                    child: Material(
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(8.0),
-                      color: AppColors.primary,
-                      child: MaterialButton(
-                          padding: const EdgeInsets.all(4.0),
-                          minWidth: MediaQuery.of(context).size.width,
-                          onPressed: () => controller.login(),
-                          child: const Text(
-                            "دخول",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          )),
-                    ),
+                  Obx(
+                    () => CustomButton(
+                        text: controller.isLoading.value ? null : 'دخول',
+                        onTap: controller.isLoading.value
+                            ? () {}
+                            : () => controller.login(),
+                        child: controller.isLoading.value
+                            ? const CupertinoActivityIndicator(
+                                color: AppColors.white,
+                              )
+                            : null),
                   ),
                   const SizedBox(
                     height: 16.0,
                   ),
-                  SizedBox(
-                    width: Get.width * 0.6,
-                    height: Get.width * 0.1,
-                    child: Material(
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(8.0),
-                      color: AppColors.primary,
-                      child: MaterialButton(
-                          padding: const EdgeInsets.all(4.0),
-                          minWidth: MediaQuery.of(context).size.width,
-                          onPressed: () {
-                            Get.to(() => const SignUpView(),
-                                binding: SignUpBinding());
-                          },
-                          child: const Text(
-                            "إنشاء حساب",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          )),
-                    ),
+                  CustomButton(
+                    text: "إنشاء حساب",
+                    onTap: () {
+                      Get.to(() => const SignUpView(),
+                          binding: SignUpBinding());
+                    },
                   ),
                   const SizedBox(height: 32.0),
                 ],

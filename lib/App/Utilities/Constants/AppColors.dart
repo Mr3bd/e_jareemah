@@ -18,7 +18,7 @@ class AppColors {
   static const Color iconColorOnPrimary = Color.fromRGBO(255, 255, 255, 0.2);
   static const Color iconColorOnWhite = Color.fromRGBO(209, 211, 226, 1.0);
   static const Color transparent = Color.fromRGBO(0, 0, 0, 0.0);
-  
+  static const Color milky = Color.fromRGBO(242, 238, 238, 1.0);
   static const Color success = Color.fromRGBO(0, 168, 98, 1.0);
   static const Color error = Color.fromRGBO(251, 78, 78, 1.0);
   static const Color warning = Color.fromRGBO(246, 166, 9, 1.0);

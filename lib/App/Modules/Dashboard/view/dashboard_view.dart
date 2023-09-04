@@ -1,3 +1,8 @@
+import 'package:e_jareemah/App/Modules/Enquire/binding/enquire_binging.dart';
+import 'package:e_jareemah/App/Modules/Enquire/views/enquire_view.dart';
+import 'package:e_jareemah/App/Utilities/Widgets/Drawer/main_drawer.dart';
+import 'package:e_jareemah/App/Utilities/Widgets/app_logo.dart';
+import 'package:e_jareemah/App/Utilities/Widgets/home_grid_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,27 +14,70 @@ class DashboardView extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
     return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: AppColors.primary),
-        title: const Text('Home'),
-        centerTitle: true,
-        backgroundColor: AppColors.white,
-        elevation: 2.0,
-        titleTextStyle:
-            Get.textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          children: [],
-        ),
-      ),
-      body: Center(
-        child: Text(controller.authManager.appUser.value.name!),
-      ),
-    );
+        key: controller.scaffoldState,
+        backgroundColor: AppColors.primaryBackground,
+        drawer: const MainDrawer(),
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Image.asset(
+                  'assets/images/logo_hover.png',
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () => controller
+                                .scaffoldState.currentState!
+                                .openDrawer(),
+                            color: AppColors.grey.withOpacity(0.5),
+                            icon: const ImageIcon(AssetImage(
+                              'assets/icons/menu.png',
+                            )))
+                      ],
+                    ),
+                    const AppLogo(),
+                    const SizedBox(
+                      height: 64.0,
+                    ),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        HomeGridItem(label: 'إبلاغ', icon: 'report'),
+                        HomeGridItem(label: 'شكوى', icon: 'complaint'),
+                      ],
+                    ).marginSymmetric(horizontal: Get.width * 0.13),
+                    const SizedBox(
+                      height: 28.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        HomeGridItem(
+                          label: 'الإستفسار',
+                          icon: 'enquire',
+                          onTap: () {
+                            Get.to(() => const EnquireView(),
+                                binding: EnquireBinding());
+                          },
+                        ),
+                        const HomeGridItem(label: 'حماية', icon: 'security'),
+                      ],
+                    ).marginSymmetric(horizontal: Get.width * 0.13),
+                  ],
+                ),
+              ),
+            ],
+          ).marginOnly(top: data.padding.top * 1),
+        ));
   }
 }
 

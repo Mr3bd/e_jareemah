@@ -12,41 +12,43 @@ class AppLogo extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 144,
-          height: 144,
+          width: 136,
+          height: 136,
           child: Stack(
             children: [
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/logo.png',
-                  width: 144,
-                  height: 144,
+                  width: 136,
+                  height: 136,
                 ),
               ),
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/heptagram.png',
-                  width: 56,
-                  height: 56,
+                  width: 48,
+                  height: 48,
                 ),
               )
             ],
           ),
         ),
-       withTitle?  Column(
-          children: [
-            const SizedBox(
-              height: 12.0,
-            ),
-            Text(
-              'جريمة',
-              style: Get.textTheme.headlineSmall!
-                  .copyWith(color: AppColors.darkBlue),
-            ),
-          ],
-        ) : const SizedBox()
+        withTitle
+            ? Column(
+                children: [
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  Text(
+                    'جريمة',
+                    style: Get.textTheme.headlineSmall!
+                        .copyWith(color: AppColors.darkBlue),
+                  ),
+                ],
+              )
+            : const SizedBox()
       ],
     );
   }

@@ -36,12 +36,11 @@ class SignUpController extends GetxController {
       return;
     }
     isLoading.value = true;
-
     registerDTO = RegisterDTO(
         phone: phoneNumber,
         nId: idEditingController.text,
         name: nameEditingController.text,
-        password: passwordEditingController.text);
+        password: appTools.encryptPassword(passwordEditingController.text));
     await authManager.firebaseServices.signInWithPhone(registerDTO, true);
   }
 

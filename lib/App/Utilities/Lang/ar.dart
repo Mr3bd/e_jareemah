@@ -13,8 +13,11 @@ const Map<String, String> ar = {
   'enterValidPhone': 'ادخل رقم هاتف صحيح',
   'enterValidPassword': 'ادخل كلمة سر لا تقل عن 6 احرف',
   'enterOTP': 'ادخل رمز التحقق',
+  'enterValidOTP': 'ادخل رمز تحقق صحيح',
   'invalidOTP': 'رمز التحقق غير صحيح',
   'thisNumberNotExist': 'هذا الرقم غير مرتبط بحساب، يرجى إنشاء حساب',
-  'thisNumberExist': 'هذا الرقم مربوط بحساب مسبقاً، يرجى تسجيل الدخول',
+  'thisNumberOrNIdExist':
+      'رقم الهاتف او الرقم الوطني مربوط بحساب مسبقاً، يرجى تسجيل الدخول',
+  'invalidData': 'معلومات تسجيل الدخول غير صحيحة',
   'error': 'لقد حدث خطأ',
 };

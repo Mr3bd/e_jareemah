@@ -3,6 +3,7 @@ import 'package:e_jareemah/App/Models/Main/DTO/register_dto.dart';
 import 'package:e_jareemah/App/Models/Main/user_model.dart';
 import 'package:e_jareemah/App/Modules/SignIn/controller/signin_controller.dart';
 import 'package:e_jareemah/App/Modules/SignUp/controller/sign_up_controller.dart';
+import 'package:e_jareemah/App/Modules/VerifyOTP/controller/verify_otp_controller.dart';
 import 'package:e_jareemah/App/Modules/VerifyOTP/view/verify_otp_view.dart';
 import 'package:e_jareemah/App/Services/AuthenticationService/Core/manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,6 +40,7 @@ class FirebaseServices {
               signInController.isLoading.value = false;
               appTools.showErrorSnackBar('loginFailed'.tr);
             }
+
             // throw Exception(error.message);
           },
           codeSent: (verificationId, forceResendingToken) {
@@ -49,8 +51,11 @@ class FirebaseServices {
               final SignInController signInController = Get.find();
               signInController.isLoading.value = false;
             }
-            Get.to(() => VerifyOTPView(verificationId: verificationId),
-                binding: VerifyOTPBinding(), arguments: register);
+            Get.to(
+              () => VerifyOTPView(verificationId: verificationId),
+              binding: VerifyOTPBinding(),
+              arguments: register,
+            );
           },
           codeAutoRetrievalTimeout: (verficationId) {});
     } on FirebaseAuthException catch (e) {
@@ -78,18 +83,38 @@ class FirebaseServices {
 
       onSuccess(user);
     } on FirebaseAuthException catch (e) {
+      final VerifyOTPController verifyOTPController = Get.find();
+      verifyOTPController.isLoading.value = false;
       appTools.showErrorSnackBar('registerFailed'.tr);
     }
   }
 
-  Future<bool> checkExistingUser(String uid) async {
-    DocumentSnapshot snapshot =
-        await _firebaseFirestore.collection("users").doc(uid).get();
-    if (snapshot.exists) {
-      return true;
-    } else {
-      return false;
-    }
+  Future<bool> checkExistingUser(UserModel userModel) async {
+    bool exist = false;
+
+    await _firebaseFirestore
+        .collection('users')
+        .where('nId', isEqualTo: userModel.nId)
+        .limit(1)
+        .get()
+        .then((snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        exist = true;
+        return;
+      }
+    });
+
+    await _firebaseFirestore
+        .collection('users')
+        .where('phone', isEqualTo: userModel.phone)
+        .limit(1)
+        .get()
+        .then((snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        exist = true;
+      }
+    });
+    return exist;
   }
 
   Future<UserModel> getDataFromFireStore({String? uid}) async {
@@ -118,6 +143,24 @@ class FirebaseServices {
     });
 
     return result;
+  }
+
+  Future<String?> getUserPhone(String nId, String password) async {
+    String? phone;
+    await _firebaseFirestore
+        .collection('users')
+        .where('nId', isEqualTo: nId)
+        .where('password', isEqualTo: password)
+        .limit(1)
+        .get()
+        .then((snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        UserModel user = UserModel.fromJson(snapshot.docs[0].data());
+        phone = user.phone;
+      }
+    });
+
+    return phone;
   }
 
   Future userSignOut() async {

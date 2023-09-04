@@ -34,6 +34,7 @@ class AuthenticationManager extends GetxController with CacheManager {
 
   Future<void> checkLoginStatus() async {
     final token = getToken();
+
     if (token != null) {
       isLogged.value = true;
       UserModel userModel =

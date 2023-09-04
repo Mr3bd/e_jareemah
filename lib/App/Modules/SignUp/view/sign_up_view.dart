@@ -12,23 +12,34 @@ class SignUpView extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    print(controller.isLoading.value);
     return GestureDetector(
         onTap: () {
           appTools.unFocusKeyboard(context);
         },
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.primaryBackground,
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0.0,
+            titleSpacing: 0.0,
+            leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black54,
+              ),
+            ),
+          ),
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(36.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 36.0, vertical: 16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const SizedBox(
-                    height: 48.0,
-                  ),
                   const AppLogo(
                     withTitle: true,
                   ),
@@ -156,6 +167,18 @@ class SignUpView extends GetView<SignUpController> {
                       )),
                   const SizedBox(
                     height: 16.0,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.lock_person,
+                        color: AppColors.primary.withOpacity(0.5),
+                      ),
+                      const SizedBox(
+                        width: 8.0,
+                      ),
+                      const Text('جميع بياناتك مشفرة'),
+                    ],
                   ),
                   const SizedBox(height: 32.0),
                   Obx(

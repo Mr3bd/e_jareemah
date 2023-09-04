@@ -9,4 +9,6 @@ class AppStyles {
     spreadRadius: 0.2,
     offset: const Offset(0, 3),
   );
+
+  static const double borderRadius = 10.0;
 }
