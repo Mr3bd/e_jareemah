@@ -48,6 +48,7 @@ dependencies:
   sms_autofill: ^2.3.0
   pdfx: ^2.4.0
   dio: ^5.3.2
+  firebase_storage: ^11.2.6
 
 
 

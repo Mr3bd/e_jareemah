@@ -31,8 +31,8 @@ class HomeGridItem extends StatelessWidget {
                 borderRadius:
                     BorderRadius.circular(AppStyles.borderRadius * 2)),
             child: Container(
-              width: Get.width * 0.2,
-              height: Get.width * 0.2,
+              width: Get.width * 0.16,
+              height: Get.width * 0.16,
               padding: const EdgeInsets.all(12.0),
               decoration: BoxDecoration(
                 color: AppColors.white,

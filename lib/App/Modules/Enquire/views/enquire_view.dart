@@ -36,6 +36,7 @@ class EnquireView extends GetView<EnquireController> {
       body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

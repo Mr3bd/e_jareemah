@@ -7,6 +7,8 @@ import '../Constants/AppColors.dart';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 
+import '../Widgets/open_single_image_dialog.dart';
+
 class AppTools {
   void unFocusKeyboard(BuildContext context) {
     FocusScopeNode currentFocus = FocusScope.of(context);
@@ -17,18 +19,44 @@ class AppTools {
   }
 
   void showSuccessSnackBar(String message, {int seconds = 0}) {
-    showTaxiSnackBar(message, SnackEnum.success, seconds);
+    showJareemahSnackBar(message, SnackEnum.success, seconds);
   }
 
   void showErrorSnackBar(String message, {int seconds = 0}) {
-    showTaxiSnackBar(message, SnackEnum.error, seconds);
+    showJareemahSnackBar(message, SnackEnum.error, seconds);
   }
 
   void showWarningSnackBar(String message, {int seconds = 0}) {
-    showTaxiSnackBar(message, SnackEnum.warning, seconds);
+    showJareemahSnackBar(message, SnackEnum.warning, seconds);
   }
 
-  void showTaxiSnackBar(String message, SnackEnum snackEnum, int seconds) {
+  void openImage(String path) {
+    Get.dialog(OpenSingleImageDialog(path: path),
+        useSafeArea: false, barrierColor: AppColors.black);
+  }
+
+  void showJareemahSnackBarWithAction(
+      String message, String actionTitle, VoidCallback onTap,
+      {int seconds = 0}) {
+    final SnackBar snackBar = SnackBar(
+      padding: const EdgeInsets.all(4.0),
+      content: Text(
+        message,
+        style: Get.textTheme.bodySmall!.copyWith(color: AppColors.white),
+      ),
+      backgroundColor: AppColors.warning,
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(seconds: 5),
+      action: SnackBarAction(
+          label: actionTitle, textColor: Colors.white, onPressed: onTap),
+    );
+
+    Future.delayed(Duration(seconds: seconds), () {
+      ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
+    });
+  }
+
+  void showJareemahSnackBar(String message, SnackEnum snackEnum, int seconds) {
     final SnackBar snackBar = SnackBar(
       content: Text(
         message,
@@ -77,8 +105,8 @@ class AppTools {
   int createRandom() {
     int randomID;
     Random random = Random();
-    int randomFirst = random.nextInt(1000000000) + 1000000;
-    int randomSecond = random.nextInt(100000) + randomFirst;
+    int randomFirst = random.nextInt(10000000) + 10000;
+    int randomSecond = random.nextInt(10000) + randomFirst;
     randomID = randomFirst + randomSecond;
     return randomID;
   }

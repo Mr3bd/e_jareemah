@@ -43,9 +43,11 @@ class SecurityController extends GetxController {
       return;
     }
     if (urlController.value.text.isURL) {
-      checkURLDTO.value.threatInfo!.threatEntries = [
-        ThreatEntries(url: urlController.value.text)
-      ];
+      checkURLDTO.update((val) {
+        val!.threatInfo!.threatEntries = [
+          ThreatEntries(url: urlController.value.text)
+        ];
+      });
 
       checkURLResponse.value = CheckURLResponse();
       isLoading.value = true;

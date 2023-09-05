@@ -42,6 +42,7 @@ class VerifyOTPView extends GetView<VerifyOTPController> {
         ),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

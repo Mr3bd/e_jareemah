@@ -21,6 +21,7 @@ class SignInView extends GetView<SignInController> {
         child: Scaffold(
           backgroundColor: AppColors.primaryBackground,
           body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Column(

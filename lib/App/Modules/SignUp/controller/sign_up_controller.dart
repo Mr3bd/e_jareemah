@@ -40,6 +40,7 @@ class SignUpController extends GetxController {
         phone: phoneNumber,
         nId: idEditingController.text,
         name: nameEditingController.text,
+        date: DateTime.now().toString(),
         password: appTools.encryptPassword(passwordEditingController.text));
     await authManager.firebaseServices.signInWithPhone(registerDTO, true);
   }

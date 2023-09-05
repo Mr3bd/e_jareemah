@@ -6,6 +6,10 @@ import 'package:e_jareemah/App/Utilities/Widgets/Drawer/drawer_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Modules/Complaint/binding/complaint_binging.dart';
+import '../../../Modules/Complaint/binding/enquire_complaint_binding.dart';
+import '../../../Modules/Complaint/views/complaint_view.dart';
+import '../../../Modules/Complaint/views/enquire_complaint_view.dart';
 import '../../../Modules/Enquire/binding/enquire_binging.dart';
 import '../../../Modules/Enquire/views/enquire_view.dart';
 import '../../../Modules/Security/binding/security_binging.dart';
@@ -21,6 +25,7 @@ class MainDrawer extends GetView<DashboardController> {
     return Drawer(
       width: Get.width * 0.65,
       child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -46,9 +51,17 @@ class MainDrawer extends GetView<DashboardController> {
               children: [
                 DrawerListItem(
                   label: 'شكوى',
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => const ComplaintView(),
+                        binding: ComplaintBinding());
+                  },
                 ),
-                DrawerListItem(label: 'إستعلام', onTap: () {}),
+                DrawerListItem(
+                    label: 'إستعلام',
+                    onTap: () {
+                      Get.to(() => const EnquireComplaintView(),
+                          binding: EnquireComplaintBinding());
+                    }),
                 DrawerListItem(
                     label: 'القانون',
                     onTap: () {

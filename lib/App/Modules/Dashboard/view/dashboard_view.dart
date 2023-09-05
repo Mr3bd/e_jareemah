@@ -2,6 +2,7 @@ import 'package:e_jareemah/App/Modules/Enquire/binding/enquire_binging.dart';
 import 'package:e_jareemah/App/Modules/Enquire/views/enquire_view.dart';
 import 'package:e_jareemah/App/Modules/Security/binding/security_binging.dart';
 import 'package:e_jareemah/App/Modules/Security/views/security_view.dart';
+import 'package:e_jareemah/App/Modules/SelectEnqComp/binding/select_enq_comp_binging.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/Drawer/main_drawer.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/app_logo.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/home_grid_item.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Utilities/Constants/AppColors.dart';
+import '../../SelectEnqComp/views/select_enq_comp_view.dart';
 import '../controller/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
@@ -22,6 +24,7 @@ class DashboardView extends GetView<DashboardController> {
         backgroundColor: AppColors.primaryBackground,
         drawer: const MainDrawer(),
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Stack(
             children: [
               Align(
@@ -50,13 +53,23 @@ class DashboardView extends GetView<DashboardController> {
                     const SizedBox(
                       height: 64.0,
                     ),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        HomeGridItem(label: 'إبلاغ', icon: 'report'),
-                        HomeGridItem(label: 'شكوى', icon: 'complaint'),
+                        const HomeGridItem(
+                          label: 'إبلاغ',
+                          icon: 'report',
+                        ),
+                        HomeGridItem(
+                          label: 'شكوى',
+                          icon: 'complaint',
+                          onTap: () {
+                            Get.to(() => const SelectEnqCompView(),
+                                binding: SelectEnqCompBinding());
+                          },
+                        ),
                       ],
-                    ).marginSymmetric(horizontal: Get.width * 0.13),
+                    ).marginSymmetric(horizontal: Get.width * 0.15),
                     const SizedBox(
                       height: 28.0,
                     ),
@@ -80,7 +93,7 @@ class DashboardView extends GetView<DashboardController> {
                           },
                         ),
                       ],
-                    ).marginSymmetric(horizontal: Get.width * 0.13),
+                    ).marginSymmetric(horizontal: Get.width * 0.15),
                   ],
                 ),
               ),

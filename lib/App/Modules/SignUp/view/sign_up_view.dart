@@ -33,6 +33,7 @@ class SignUpView extends GetView<SignUpController> {
             ),
           ),
           body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 36.0, vertical: 16.0),

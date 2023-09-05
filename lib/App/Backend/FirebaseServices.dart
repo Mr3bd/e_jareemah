@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_jareemah/App/Models/Main/DTO/complaint_dto.dart';
 import 'package:e_jareemah/App/Models/Main/DTO/register_dto.dart';
 import 'package:e_jareemah/App/Models/Main/user_model.dart';
 import 'package:e_jareemah/App/Modules/SignIn/controller/signin_controller.dart';
@@ -9,6 +12,8 @@ import 'package:e_jareemah/App/Services/AuthenticationService/Core/manager.dart'
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import '../Modules/VerifyOTP/binding/verify_otp_binding.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
 
 class FirebaseServices {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -161,6 +166,38 @@ class FirebaseServices {
     });
 
     return phone;
+  }
+
+  Future<String> uploadSingleFile(File image) async {
+    firebase_storage.Reference storageReference =
+        firebase_storage.FirebaseStorage.instance.ref().child(
+            'Evidence/${DateTime.now().millisecondsSinceEpoch}_${image.path.split('/').last}');
+    firebase_storage.UploadTask uploadTask = storageReference.putFile(image);
+
+    try {
+      firebase_storage.TaskSnapshot snapshotTask = await uploadTask;
+      String url = await snapshotTask.ref.getDownloadURL();
+
+      return url;
+    } on firebase_core.FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {}
+
+      return '';
+    }
+  }
+
+  Future<bool> addComplaint({
+    required ComplaintDTO complaintDTO,
+  }) async {
+    bool result = false;
+    await _firebaseFirestore
+        .collection("complaints")
+        .add(complaintDTO.toJson())
+        .then((value) {
+      result = true;
+    });
+
+    return result;
   }
 
   Future userSignOut() async {

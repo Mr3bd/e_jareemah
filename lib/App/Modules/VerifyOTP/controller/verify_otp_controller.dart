@@ -50,12 +50,14 @@ class VerifyOTPController extends GetxController {
               UserModel newModel =
                   UserModel.fromJson(signUpController.registerDTO.toJson());
               newModel.userId = user.uid;
+              Get.log(signUpController.registerDTO.toJson().toString());
 
               bool result =
                   await authManager.firebaseServices.saveUserDataToFirebase(
                 userModel: newModel,
               );
               if (result) {
+                Get.log(newModel.toJson().toString());
                 authManager.appUser.value = newModel;
                 appTools.showSuccessSnackBar('registerSuccess'.tr);
 

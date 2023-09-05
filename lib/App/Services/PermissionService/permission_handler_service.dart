@@ -4,7 +4,6 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../AuthenticationService/Core/manager.dart';
 
-
 class HandlerPermissionService implements PermissionsService {
   @override
   Future<PermissionStatus> requestCameraPermission() async {
@@ -55,8 +54,10 @@ class HandlerPermissionService implements PermissionsService {
     PermissionStatus photosPermissionStatus = await requestPhotosPermission();
 
     if (photosPermissionStatus != PermissionStatus.granted) {
-      // appTools.showTaxiPerrySnackBarWithAction(
-      //     'permissionPhotosFailed'.tr, 'openSettings'.tr, openAppSettings);
+      appTools.showJareemahSnackBarWithAction(
+          'لم يتم الحصول على صلاحية الوصول للصور',
+          'فتح الاعدادات',
+          openAppSettings);
 
       return false;
     }
