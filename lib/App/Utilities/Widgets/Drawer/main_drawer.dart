@@ -6,6 +6,11 @@ import 'package:e_jareemah/App/Utilities/Widgets/Drawer/drawer_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Modules/Enquire/binding/enquire_binging.dart';
+import '../../../Modules/Enquire/views/enquire_view.dart';
+import '../../../Modules/Security/binding/security_binging.dart';
+import '../../../Modules/Security/views/security_view.dart';
+
 class MainDrawer extends GetView<DashboardController> {
   const MainDrawer({super.key});
 
@@ -50,8 +55,18 @@ class MainDrawer extends GetView<DashboardController> {
                       Get.to(() =>
                           const PdfViewer(title: 'القانون', fileName: 'law'));
                     }),
-                DrawerListItem(label: 'حماية', onTap: () {}),
-                DrawerListItem(label: 'الإستفسار', onTap: () {}),
+                DrawerListItem(
+                    label: 'حماية',
+                    onTap: () {
+                      Get.to(() => const SecurityView(),
+                          binding: SecurityBinding());
+                    }),
+                DrawerListItem(
+                    label: 'الإستفسار',
+                    onTap: () {
+                      Get.to(() => const EnquireView(),
+                          binding: EnquireBinding());
+                    }),
                 DrawerListItem(
                     label: 'خروج',
                     onTap: () async {

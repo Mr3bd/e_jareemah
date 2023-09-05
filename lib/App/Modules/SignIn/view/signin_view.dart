@@ -37,7 +37,7 @@ class SignInView extends GetView<SignInController> {
                   TextFormField(
                       autofocus: false,
                       controller: controller.nIdEditingController,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.text,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return ("Please Enter Your Email");

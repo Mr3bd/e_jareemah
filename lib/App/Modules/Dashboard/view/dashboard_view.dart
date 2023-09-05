@@ -1,5 +1,7 @@
 import 'package:e_jareemah/App/Modules/Enquire/binding/enquire_binging.dart';
 import 'package:e_jareemah/App/Modules/Enquire/views/enquire_view.dart';
+import 'package:e_jareemah/App/Modules/Security/binding/security_binging.dart';
+import 'package:e_jareemah/App/Modules/Security/views/security_view.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/Drawer/main_drawer.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/app_logo.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/home_grid_item.dart';
@@ -69,7 +71,14 @@ class DashboardView extends GetView<DashboardController> {
                                 binding: EnquireBinding());
                           },
                         ),
-                        const HomeGridItem(label: 'حماية', icon: 'security'),
+                        HomeGridItem(
+                          label: 'حماية',
+                          icon: 'security',
+                          onTap: () {
+                            Get.to(() => const SecurityView(),
+                                binding: SecurityBinding());
+                          },
+                        ),
                       ],
                     ).marginSymmetric(horizontal: Get.width * 0.13),
                   ],

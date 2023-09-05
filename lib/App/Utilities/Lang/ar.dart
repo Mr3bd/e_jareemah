@@ -19,5 +19,7 @@ const Map<String, String> ar = {
   'thisNumberOrNIdExist':
       'رقم الهاتف او الرقم الوطني مربوط بحساب مسبقاً، يرجى تسجيل الدخول',
   'invalidData': 'معلومات تسجيل الدخول غير صحيحة',
+  'enterURL': 'يرجى ادخال الرابط',
+  'enterValidURL': 'يرجى ادخال رابط صحيح',
   'error': 'لقد حدث خطأ',
 };
