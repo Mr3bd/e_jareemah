@@ -1,4 +1,4 @@
-class ComplaintDTO {
+class Complaint {
   int? id;
   String? nId;
   int? type;
@@ -7,9 +7,9 @@ class ComplaintDTO {
   int? status;
   String? defendant;
   String? description;
-  List<String>? files;
+  List<String>? files = [];
   String? date;
-  ComplaintDTO(
+  Complaint(
       {this.id,
       this.type,
       this.location,
@@ -21,7 +21,7 @@ class ComplaintDTO {
       this.nId,
       this.date});
 
-  ComplaintDTO.fromJson(Map<String, dynamic> json) {
+  Complaint.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     type = json['type'];
     location = json['location'];
@@ -30,7 +30,11 @@ class ComplaintDTO {
     description = json['description'];
     status = json['status'];
     nId = json['nId'];
-    files = json['files'].cast<String>();
+    if (json['files'] == null) {
+      files = [];
+    } else {
+      files = json['files'].cast<String>();
+    }
     date = json['date'];
   }
 

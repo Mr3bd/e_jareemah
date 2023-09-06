@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_jareemah/App/Models/Main/DTO/complaint_dto.dart';
+import 'package:e_jareemah/App/Models/Main/complaint.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -77,7 +77,7 @@ class ComplaintController extends GetxController {
       return appTools.showErrorSnackBar('يرجى ادخال وصف للشكوى');
     }
     isLoading.value = true;
-    ComplaintDTO complaintDTO = ComplaintDTO(
+    Complaint complaintDTO = Complaint(
         id: appTools.createRandom(),
         status: 1,
         nId: authManager.appUser.value.nId,

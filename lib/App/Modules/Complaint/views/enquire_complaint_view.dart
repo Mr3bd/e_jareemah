@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_jareemah/App/Modules/Complaint/binding/complaint_details_binging.dart';
 import 'package:e_jareemah/App/Modules/Complaint/controllers/enquire_complaint_controller.dart';
+import 'package:e_jareemah/App/Modules/Complaint/views/complaint_details_view.dart';
 import 'package:e_jareemah/App/Modules/Complaint/widget/complaint_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Models/Main/complaint.dart';
 import '../../../Utilities/Constants/AppColors.dart';
 
 class EnquireComplaintView extends GetView<EnquireComplaintController> {
@@ -62,12 +65,18 @@ class EnquireComplaintView extends GetView<EnquireComplaintController> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
-                    DocumentSnapshot document = documents[index];
+                    Complaint complaint = Complaint.fromJson(
+                        documents[index].data() as Map<String, dynamic>);
 
                     return ComplaintItem(
-                        date: document['date'],
-                        number: document['id'],
-                        status: document['status']);
+                      date: complaint.date!,
+                      number: complaint.id!,
+                      status: complaint.status!,
+                      onTap: () {
+                        Get.to(
+                            () => const ComplaintDetailsView(),  binding: ComplaintDetailsBinding(), arguments: complaint);
+                      },
+                    );
                   },
                 );
               },

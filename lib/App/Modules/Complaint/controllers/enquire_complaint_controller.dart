@@ -10,7 +10,9 @@ class EnquireComplaintController extends GetxController {
   @override
   Future<void> onInit() async {
     getComplaints = FirebaseFirestore.instance
-        .collection('complaints')
+        .collection(
+          'complaints',
+        )
         .orderBy('date')
         .where('nId', isEqualTo: authManager.appUser.value.nId)
         .snapshots();

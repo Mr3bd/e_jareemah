@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_jareemah/App/Models/Main/DTO/complaint_dto.dart';
+import 'package:e_jareemah/App/Models/Main/complaint.dart';
 import 'package:e_jareemah/App/Models/Main/DTO/register_dto.dart';
 import 'package:e_jareemah/App/Models/Main/user_model.dart';
 import 'package:e_jareemah/App/Modules/SignIn/controller/signin_controller.dart';
@@ -187,7 +187,7 @@ class FirebaseServices {
   }
 
   Future<bool> addComplaint({
-    required ComplaintDTO complaintDTO,
+    required Complaint complaintDTO,
   }) async {
     bool result = false;
     await _firebaseFirestore
