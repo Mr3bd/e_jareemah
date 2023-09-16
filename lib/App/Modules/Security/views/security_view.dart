@@ -46,9 +46,11 @@ class SecurityView extends GetView<SecurityController> {
                   const SizedBox(
                     height: 32.0,
                   ),
-                  Image.asset(
-                    'assets/icons/check_link.png',
-                    scale: 2.5,
+                  SvgPicture.asset(
+                    'assets/icons/check_link.svg',
+                    // scale: 2.5,
+                    width: Get.width * 0.3,
+                    height: Get.width * 0.3,
                   ),
                   const SizedBox(
                     height: 32.0,

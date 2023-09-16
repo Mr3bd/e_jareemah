@@ -59,18 +59,18 @@ class DashboardView extends GetView<DashboardController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         HomeGridItem(
-                          label: 'إبلاغ',
-                          icon: 'report',
-                          onTap: () => Get.to(() => const ReportView(),
-                              binding: ReportBinding()),
-                        ),
-                        HomeGridItem(
                           label: 'شكوى',
                           icon: 'complaint',
                           onTap: () {
                             Get.to(() => const SelectEnqCompView(),
                                 binding: SelectEnqCompBinding());
                           },
+                        ),
+                        HomeGridItem(
+                          label: 'إبلاغ',
+                          icon: 'report',
+                          onTap: () => Get.to(() => const ReportView(),
+                              binding: ReportBinding()),
                         ),
                       ],
                     ).marginSymmetric(horizontal: Get.width * 0.15),
