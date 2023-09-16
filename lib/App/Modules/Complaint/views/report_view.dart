@@ -1,5 +1,5 @@
 import 'package:e_jareemah/App/Modules/Complaint/widget/crime_location_list.dart';
-import 'package:e_jareemah/App/Modules/Complaint/widget/crime_types_list.dart';
+import 'package:e_jareemah/App/Modules/Complaint/widget/report_types_list.dart';
 import 'package:e_jareemah/App/Services/AuthenticationService/Core/manager.dart';
 import 'package:e_jareemah/App/Utilities/Constants/AppStyles.dart';
 import 'package:e_jareemah/App/Utilities/Widgets/custom_button.dart';
@@ -7,10 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Utilities/Constants/AppColors.dart';
-import '../controllers/complaint_controller.dart';
+import '../controllers/report_controller.dart';
 
-class ComplaintView extends GetView<ComplaintController> {
-  const ComplaintView({super.key});
+class ReportView extends GetView<ReportController> {
+  const ReportView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ComplaintView extends GetView<ComplaintController> {
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
         title: Text(
-          'شكوى',
+          'إبلاغ',
           style: Get.textTheme.headlineMedium!
               .copyWith(fontWeight: FontWeight.bold),
         ),
@@ -42,25 +42,14 @@ class ComplaintView extends GetView<ComplaintController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                children: [
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  Text('بسم الله الرحمن الرحيم',
-                      style: Get.textTheme.titleLarge!.copyWith(
-                          color: AppColors.darkBlue,
-                          fontWeight: FontWeight.w500)),
-                  const SizedBox(
-                    height: 24.0,
-                  ),
-                  Text('إن تعرّضت لجريمة إلكترونيّة يمكنك التبليغ عنها هنا',
-                      style: Get.textTheme.titleLarge!.copyWith(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.w500)),
-                ],
+              const SizedBox(
+                height: 32.0,
               ),
-              CrimeTypesList(
+              Text(
+                  'التبليغ عن كل ما يصنّف كجريمة إلكترونية لإبلاغ الجهة الأمنيّة عنها',
+                  style: Get.textTheme.titleLarge!.copyWith(
+                      color: AppColors.primary, fontWeight: FontWeight.w500)),
+              ReportTypesList(
                 controller: controller,
               ),
               CrimeLocationsList(
@@ -122,7 +111,7 @@ class ComplaintView extends GetView<ComplaintController> {
               const SizedBox(
                 height: 32.0,
               ),
-              Text('وصف الشكوى',
+              Text('وصف الإبلاغ',
                   style: Get.textTheme.titleMedium!.copyWith(
                       color: AppColors.darkBlue, fontWeight: FontWeight.w500)),
               const SizedBox(
@@ -159,7 +148,7 @@ class ComplaintView extends GetView<ComplaintController> {
                     ),
                     fillColor: AppColors.grey.withOpacity(0.1),
                     filled: true,
-                    hintText: "تفاصيل الشكوى",
+                    hintText: "تفاصيل الإبلاغ",
                     hintStyle: TextStyle(
                       color: AppColors.grey.withOpacity(0.5),
                     ),
@@ -267,7 +256,7 @@ class ComplaintView extends GetView<ComplaintController> {
                       text: controller.isLoading.value ? null : 'ارسال',
                       onTap: controller.isLoading.value
                           ? () {}
-                          : () => controller.sendComplaint(),
+                          : () => controller.sendReport(),
                       child: controller.isLoading.value
                           ? const CupertinoActivityIndicator(
                               color: AppColors.white,

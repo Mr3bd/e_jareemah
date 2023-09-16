@@ -5,9 +5,10 @@ import '../Constants/AppColors.dart';
 class CustomButton extends StatelessWidget {
   final String? text;
   final Widget? child;
+  final Color? color;
   final Function()? onTap;
 
-  const CustomButton({super.key, this.text, this.child, this.onTap});
+  const CustomButton({super.key, this.text, this.child, this.onTap, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
       child: Material(
         elevation: 0,
         borderRadius: BorderRadius.circular(8.0),
-        color: AppColors.primary,
+        color: color ?? AppColors.primary,
         child: child ??
             MaterialButton(
                 padding: const EdgeInsets.all(4.0),

@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 class AppLogo extends StatelessWidget {
   final bool withTitle;
-  const AppLogo({super.key, this.withTitle = false});
+  final bool? manager;
+  const AppLogo({super.key, this.withTitle = false, this.manager = false});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class AppLogo extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/${manager! ? 'manager_logo' : 'logo'}.png',
                   width: 136,
                   height: 136,
                 ),

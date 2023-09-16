@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Utilities/Constants/AppColors.dart';
 import '../../../Utilities/Constants/AppStyles.dart';
-import '../controllers/complaint_controller.dart';
 
-class CrimeLocationsList extends GetView<ComplaintController> {
-  const CrimeLocationsList({super.key});
+class CrimeLocationsList extends StatelessWidget {
+  final controller;
+  const CrimeLocationsList({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

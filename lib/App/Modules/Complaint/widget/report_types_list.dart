@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_jareemah/App/Modules/Complaint/controllers/report_controller.dart';
 import 'package:e_jareemah/App/Utilities/Constants/AppStyles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Utilities/Constants/AppColors.dart';
 
-class CrimeTypesList extends StatelessWidget {
+class ReportTypesList extends StatelessWidget {
   final controller;
-  const CrimeTypesList( {super.key, required this.controller});
+  const ReportTypesList({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +18,14 @@ class CrimeTypesList extends StatelessWidget {
         const SizedBox(
           height: 32.0,
         ),
-        Text('نوع الجريمة الإلكترونية',
+        Text('التبليغ عن',
             style: Get.textTheme.titleMedium!.copyWith(
                 color: AppColors.darkBlue, fontWeight: FontWeight.w500)),
         const SizedBox(
           height: 8.0,
         ),
         StreamBuilder<QuerySnapshot>(
-          stream: controller.crimeTypesStream,
+          stream: controller.reportTypesStream,
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {

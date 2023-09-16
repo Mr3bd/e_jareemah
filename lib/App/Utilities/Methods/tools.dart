@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:e_jareemah/App/Utilities/Constants/AppStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -94,6 +95,52 @@ class AppTools {
       Uri.parse(url),
       mode: LaunchMode.externalApplication,
     )) throw 'Could not launch $url';
+  }
+
+  void showEncryptionDialog(Color themeColor) {
+    showDialog(
+      context: Get.context!,
+      builder: (context) => AlertDialog(
+        title: const Center(child: Text("نظام التشفير")),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.lock_person,
+              color: themeColor.withOpacity(0.5),
+              size: 64.0,
+            ),
+            const SizedBox(
+              height: 8.0,
+            ),
+            Text(
+              'نستخدم نظام التشفير بإستخدام عدة خوارزميات مثل SHA256، كم نستخدم أسلوب تشفير End-to-end، ويضمن هذه الأسلوب حماية سرية وصحة البيانات وعدم التلاعب والإطلاع عليها من قبل أشخاص غير مخولين لهم.',
+              style: Get.textTheme.labelLarge,
+            )
+          ],
+        ),
+        actionsAlignment: MainAxisAlignment.center,
+        shape: const RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.all(Radius.circular(AppStyles.borderRadius))),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Container(
+              color: themeColor,
+              padding: const EdgeInsets.all(14),
+              child: Text(
+                "رجوع",
+                style:
+                    Get.textTheme.titleMedium!.copyWith(color: AppColors.white),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   String encryptPassword(String password) {

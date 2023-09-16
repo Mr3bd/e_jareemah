@@ -1,3 +1,4 @@
+import 'package:e_jareemah/App/Modules/SignIn/binding/manager_signin_binding.dart';
 import 'package:e_jareemah/App/Modules/SignUp/binding/sign_up_binding.dart';
 import 'package:e_jareemah/App/Modules/SignUp/view/sign_up_view.dart';
 import 'package:e_jareemah/App/Services/AuthenticationService/Core/manager.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Utilities/Constants/AppColors.dart';
 import '../controller/signin_controller.dart';
+import 'manager_SignIn_view.dart';
 
 class SignInView extends GetView<SignInController> {
   const SignInView({super.key});
@@ -119,22 +121,30 @@ class SignInView extends GetView<SignInController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.lock_person,
-                            color: AppColors.primary.withOpacity(0.5),
-                          ),
-                          const SizedBox(
-                            width: 8.0,
-                          ),
-                          const Text('جميع بياناتك مشفرة'),
-                        ],
+                      GestureDetector(
+                        onTap: () =>
+                            appTools.showEncryptionDialog(AppColors.primary),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.lock_person,
+                              color: AppColors.primary.withOpacity(0.5),
+                            ),
+                            const SizedBox(
+                              width: 8.0,
+                            ),
+                            const Text('جميع بياناتك مشفرة'),
+                          ],
+                        ),
                       ),
-                      Text(
-                        'دخول كمشرف',
-                        style: Get.textTheme.labelLarge!
-                            .copyWith(color: AppColors.primary),
+                      GestureDetector(
+                        onTap: () => Get.off(() => const ManagerSignInView(),
+                            binding: ManagerSignInBinding()),
+                        child: Text(
+                          'دخول كمشرف',
+                          style: Get.textTheme.labelLarge!
+                              .copyWith(color: AppColors.primary),
+                        ),
                       ),
                     ],
                   ),

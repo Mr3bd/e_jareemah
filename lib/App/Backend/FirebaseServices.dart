@@ -10,6 +10,7 @@ import 'package:e_jareemah/App/Modules/VerifyOTP/controller/verify_otp_controlle
 import 'package:e_jareemah/App/Modules/VerifyOTP/view/verify_otp_view.dart';
 import 'package:e_jareemah/App/Services/AuthenticationService/Core/manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../Modules/VerifyOTP/binding/verify_otp_binding.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -131,7 +132,7 @@ class FirebaseServices {
         .then((DocumentSnapshot snapshot) {
       userModel = UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
     });
-
+    print(userModel.toJson());
     return userModel;
   }
 
@@ -168,6 +169,23 @@ class FirebaseServices {
     return phone;
   }
 
+  Future<String?> getEmail(String password) async {
+    String? email;
+    await _firebaseFirestore
+        .collection('users')
+        .where('password', isEqualTo: password)
+        .limit(1)
+        .get()
+        .then((snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        UserModel user = UserModel.fromJson(snapshot.docs[0].data());
+        email = user.email;
+      }
+    });
+
+    return email;
+  }
+
   Future<String> uploadSingleFile(File image) async {
     firebase_storage.Reference storageReference =
         firebase_storage.FirebaseStorage.instance.ref().child(
@@ -197,6 +215,48 @@ class FirebaseServices {
       result = true;
     });
 
+    return result;
+  }
+
+  Future<bool> addReport({
+    required Complaint complaintDTO,
+  }) async {
+    bool result = false;
+    await _firebaseFirestore
+        .collection("reports")
+        .add(complaintDTO.toJson())
+        .then((value) {
+      result = true;
+    });
+
+    return result;
+  }
+
+  Future<bool> loginUsingEmailPassword({
+    required String email,
+    required String password,
+  }) async {
+    bool result = false;
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      if (_firebaseAuth.currentUser != null) {
+        UserModel userModel =
+            await getDataFromFireStore(uid: _firebaseAuth.currentUser!.uid);
+        final AuthenticationManager authenticationManager = Get.find();
+
+        if (userModel.userId != null) {
+          authenticationManager.login(userModel);
+          result = true;
+        } else {
+          authenticationManager.logOut();
+        }
+      }
+    } catch (err) {
+      if (kDebugMode) {
+        print(err);
+      }
+    }
     return result;
   }
 

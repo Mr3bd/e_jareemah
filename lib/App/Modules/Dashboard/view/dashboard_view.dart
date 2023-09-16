@@ -1,3 +1,4 @@
+import 'package:e_jareemah/App/Modules/Complaint/binding/report_binging.dart';
 import 'package:e_jareemah/App/Modules/Enquire/binding/enquire_binging.dart';
 import 'package:e_jareemah/App/Modules/Enquire/views/enquire_view.dart';
 import 'package:e_jareemah/App/Modules/Security/binding/security_binging.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Utilities/Constants/AppColors.dart';
+import '../../Complaint/views/report_view.dart';
 import '../../SelectEnqComp/views/select_enq_comp_view.dart';
 import '../controller/dashboard_controller.dart';
 
@@ -56,9 +58,11 @@ class DashboardView extends GetView<DashboardController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const HomeGridItem(
+                        HomeGridItem(
                           label: 'إبلاغ',
                           icon: 'report',
+                          onTap: () => Get.to(() => const ReportView(),
+                              binding: ReportBinding()),
                         ),
                         HomeGridItem(
                           label: 'شكوى',
