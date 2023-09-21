@@ -36,7 +36,7 @@ class SignUpView extends GetView<SignUpController> {
             physics: const BouncingScrollPhysics(),
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 36.0, vertical: 16.0),
+                  const EdgeInsets.symmetric(horizontal: 36.0, vertical: 8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -171,16 +171,36 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.lock_person,
-                        color: AppColors.primary.withOpacity(0.5),
+                     // Icon(
+                       // Icons.lock_person,
+                        //color: AppColors.primary.withOpacity(0.5),
+                      //),
+                      //const SizedBox(
+                       // width: 8.0,
+                      //),
+                      //const Text('جميع بياناتك مشفرة'),
+                    //],
+                  //),
+                  GestureDetector(
+                        onTap: () =>
+                            appTools.showEncryptionDialog(AppColors.primary),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.lock_person,
+                              color: AppColors.primary.withOpacity(0.5),
+                           ),
+
+                            const SizedBox(
+                              width: 8.0,
+                            ),
+                            const Text('جميع بياناتك مشفرة'),
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
-                      const Text('جميع بياناتك مشفرة'),
                     ],
                   ),
+                
                   const SizedBox(height: 32.0),
                   Obx(
                     () => CustomButton(

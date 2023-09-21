@@ -24,7 +24,9 @@ class HomeGridItem extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: //const EdgeInsets.all(8.0),
+                const EdgeInsetsDirectional.symmetric(
+                    horizontal: 24, vertical: 8),
             decoration: BoxDecoration(
                 color: AppColors.milky,
                 boxShadow: [AppStyles.primaryShadow],
@@ -34,7 +36,9 @@ class HomeGridItem extends StatelessWidget {
               width: Get.width * 0.16,
               height: Get.width * 0.16,
               padding: const EdgeInsets.all(12.0),
+              
               decoration: BoxDecoration(
+              
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(AppStyles.borderRadius * 2),
               ),

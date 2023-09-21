@@ -121,22 +121,23 @@ class SignInView extends GetView<SignInController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: () =>
-                            appTools.showEncryptionDialog(AppColors.primary),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.lock_person,
-                              color: AppColors.primary.withOpacity(0.5),
-                            ),
-                            const SizedBox(
-                              width: 8.0,
-                            ),
-                            const Text('جميع بياناتك مشفرة'),
-                          ],
-                        ),
-                      ),
+                      //GestureDetector(
+                       // onTap: () =>
+                       //     appTools.showEncryptionDialog(AppColors.primary),
+                       // child: Row(
+                        //  children: [
+                           // Icon(
+                          //    Icons.lock_person,
+                            //  color: AppColors.primary.withOpacity(0.5),
+                          //  ),
+
+                          //  const SizedBox(
+                           //   width: 8.0,
+                           // ),
+                           // const Text('جميع بياناتك مشفرة'),
+                     //     ],
+                     //   ),
+                     // ),
                       GestureDetector(
                         onTap: () => Get.off(() => const ManagerSignInView(),
                             binding: ManagerSignInBinding()),
@@ -171,7 +172,7 @@ class SignInView extends GetView<SignInController> {
                           binding: SignUpBinding());
                     },
                   ),
-                  const SizedBox(height: 32.0),
+                  const SizedBox(height: 44.0),
                 ],
               ),
             ),

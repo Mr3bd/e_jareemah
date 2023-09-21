@@ -53,14 +53,14 @@ class DashboardView extends GetView<DashboardController> {
                     ),
                     const AppLogo(),
                     const SizedBox(
-                      height: 64.0,
+                      height: 72.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         HomeGridItem(
                           label: 'شكوى',
-                          icon: 'complaint',
+                          icon: 'shakwa',
                           onTap: () {
                             Get.to(() => const SelectEnqCompView(),
                                 binding: SelectEnqCompBinding());
@@ -81,19 +81,19 @@ class DashboardView extends GetView<DashboardController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         HomeGridItem(
-                          label: 'الإستفسار',
-                          icon: 'enquire',
-                          onTap: () {
-                            Get.to(() => const EnquireView(),
-                                binding: EnquireBinding());
-                          },
-                        ),
-                        HomeGridItem(
                           label: 'حماية',
                           icon: 'security',
                           onTap: () {
                             Get.to(() => const SecurityView(),
                                 binding: SecurityBinding());
+                          },
+                        ),
+                        HomeGridItem(
+                          label: 'الإستفسار',
+                          icon: 'enquire',
+                          onTap: () {
+                            Get.to(() => const EnquireView(),
+                                binding: EnquireBinding());
                           },
                         ),
                       ],
