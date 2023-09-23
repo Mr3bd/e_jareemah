@@ -14,6 +14,8 @@ import '../../../Modules/Enquire/binding/enquire_binging.dart';
 import '../../../Modules/Enquire/views/enquire_view.dart';
 import '../../../Modules/Security/binding/security_binging.dart';
 import '../../../Modules/Security/views/security_view.dart';
+import '../../../Modules/SignIn/binding/manager_signin_binding.dart';
+import '../../../Modules/SignIn/view/manager_SignIn_view.dart';
 
 class MainDrawer extends GetView<DashboardController> {
   const MainDrawer({super.key});
@@ -47,48 +49,56 @@ class MainDrawer extends GetView<DashboardController> {
             const SizedBox(
               height: 32.0,
             ),
-            Column(
-              children: [
-                DrawerListItem(
-                  label: 'شكوى',
-                  onTap: () {
-                    Get.to(() => const ComplaintView(),
-                        binding: ComplaintBinding());
-                  },
-                ),
-                DrawerListItem(
-                    label: 'إستعلام',
-                    onTap: () {
-                      Get.to(() => const EnquireComplaintView(),
-                          binding: EnquireComplaintBinding());
-                    }),
-                DrawerListItem(
-                    label: 'القانون',
-                    onTap: () {
-                      Get.to(() =>
-                          const PdfViewer(title: 'القانون', fileName: 'law'));
-                    }),
-                DrawerListItem(
-                    label: 'حماية',
-                    onTap: () {
-                      Get.to(() => const SecurityView(),
-                          binding: SecurityBinding());
-                    }),
-                DrawerListItem(
-                    label: 'الإستفسار',
-                    onTap: () {
-                      Get.to(() => const EnquireView(),
-                          binding: EnquireBinding());
-                    }),
-                DrawerListItem(
+            !controller.authManager.isManager
+                ? Column(
+                    children: [
+                      DrawerListItem(
+                        label: 'شكوى',
+                        onTap: () {
+                          Get.to(() => const ComplaintView(),
+                              binding: ComplaintBinding());
+                        },
+                      ),
+                      DrawerListItem(
+                          label: 'إستعلام',
+                          onTap: () {
+                            Get.to(() => const EnquireComplaintView(),
+                                binding: EnquireComplaintBinding());
+                          }),
+                      DrawerListItem(
+                          label: 'القانون',
+                          onTap: () {
+                            Get.to(() => const PdfViewer(
+                                title: 'القانون', fileName: 'law'));
+                          }),
+                      DrawerListItem(
+                          label: 'حماية',
+                          onTap: () {
+                            Get.to(() => const SecurityView(),
+                                binding: SecurityBinding());
+                          }),
+                      DrawerListItem(
+                          label: 'الإستفسار',
+                          onTap: () {
+                            Get.to(() => const EnquireView(),
+                                binding: EnquireBinding());
+                          }),
+                      DrawerListItem(
+                          label: 'خروج',
+                          onTap: () async {
+                            await controller.authManager.logOut();
+                            Get.offAll(() => const SignInView(),
+                                binding: SignInBinding());
+                          }),
+                    ],
+                  )
+                : DrawerListItem(
                     label: 'خروج',
                     onTap: () async {
                       await controller.authManager.logOut();
-                      Get.offAll(() => const SignInView(),
-                          binding: SignInBinding());
+                      Get.off(() => const ManagerSignInView(),
+                          binding: ManagerSignInBinding());
                     }),
-              ],
-            )
           ],
         ),
       ),

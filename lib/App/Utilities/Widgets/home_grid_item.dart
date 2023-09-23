@@ -24,26 +24,16 @@ class HomeGridItem extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: //const EdgeInsets.all(8.0),
-                const EdgeInsetsDirectional.symmetric(
-                    horizontal: 24, vertical: 8),
+            width: Get.width * 0.25,
+            height: Get.width * 0.2,
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
-                color: AppColors.milky,
-                boxShadow: [AppStyles.primaryShadow],
-                borderRadius:
-                    BorderRadius.circular(AppStyles.borderRadius * 2)),
-            child: Container(
-              width: Get.width * 0.16,
-              height: Get.width * 0.16,
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(AppStyles.borderRadius * 2),
-              ),
-              child: Image.asset(
-                'assets/icons/$icon.png',
-                fit: BoxFit.fitWidth,
-              ),
+                border: Border.all(width: 8.0, color: AppColors.milky)),
+            child: Image.asset(
+              'assets/icons/$icon.png',
+              width: 60,
             ),
           ),
           const SizedBox(

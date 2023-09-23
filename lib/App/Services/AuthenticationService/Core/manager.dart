@@ -16,7 +16,8 @@ class AuthenticationManager extends GetxController with CacheManager {
   final FirebaseServices firebaseServices = FirebaseServices();
   final isLogged = false.obs;
   final GetStorage storage = GetStorage();
-
+  get isManager => appUser.value.role == 'manager';
+  
   Future<void> logOut() async {
     isLogged.value = false;
     await storage.erase();

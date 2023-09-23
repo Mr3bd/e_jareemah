@@ -40,6 +40,9 @@ class ComplaintDetailsView extends GetView<ComplaintDetailsController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 32.0,
+              ),
               ComplaintDetailItem(
                   label: 'رقم الشكوى',
                   value: controller.complaint.id.toString()),
@@ -60,7 +63,10 @@ class ComplaintDetailsView extends GetView<ComplaintDetailsController> {
               ComplaintDetailItem(
                   label: 'وصف الشكوى',
                   value: controller.complaint.description!),
-              const ComplaintDetailItem(label: 'مرفقات', value: ''),
+              const ComplaintDetailItem(
+                label: 'مرفقات',
+                withBack: false,
+              ),
               controller.complaint.files!.isNotEmpty
                   ? SizedBox(
                       height: Get.width / 3,
