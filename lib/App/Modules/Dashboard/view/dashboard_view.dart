@@ -102,7 +102,7 @@ class DashboardView extends GetView<DashboardController> {
                                 children: [
                                   HomeGridItem(
                                     label: 'شكوى',
-                                    icon: 'complaint',
+                                    icon: 'shakwa',
                                     onTap: () {
                                       Get.to(() => const SelectEnqCompView(),
                                           binding: SelectEnqCompBinding());
@@ -133,7 +133,7 @@ class DashboardView extends GetView<DashboardController> {
                                     },
                                   ),
                                   HomeGridItem(
-                                    label: 'الإستفسار',
+                                    label: 'إستفسار',
                                     icon: 'enquire',
                                     onTap: () {
                                       Get.to(() => const EnquireView(),

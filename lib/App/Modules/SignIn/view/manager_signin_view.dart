@@ -79,22 +79,22 @@ class ManagerSignInView extends GetView<ManagerSignInController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: () => appTools
-                            .showEncryptionDialog(AppColors.managerColor),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.lock_person,
-                              color: AppColors.managerColor.withOpacity(0.5),
-                            ),
-                            const SizedBox(
-                              width: 8.0,
-                            ),
-                            const Text('جميع البيانات مشفرة'),
-                          ],
-                        ),
-                      ),
+                  //    GestureDetector(
+                    //    onTap: () => appTools
+                      //      .showEncryptionDialog(AppColors.managerColor),
+                       // child: Row(
+   //                       children: [
+     //                       Icon(
+       //                       Icons.lock_person,
+         //                     color: AppColors.managerColor.withOpacity(0.5),
+           //                 ),
+             //               const SizedBox(
+               //               width: 8.0,
+                 //           ),
+                   //         const Text('جميع البيانات مشفرة'),
+                     //     ],
+                       // ),
+                  //    ),
                       GestureDetector(
                           onTap: () => Get.off(() => const SignInView(),
                               binding: SignInBinding()),
@@ -106,24 +106,24 @@ class ManagerSignInView extends GetView<ManagerSignInController> {
                   const SizedBox(
                     height: 32.0,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.info,
-                        color: AppColors.managerColor.withOpacity(0.5),
-                      ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
-                      SizedBox(
-                        width: Get.width * 0.7,
-                        child: const Text(
-                            'نظراً لأن هذه النسخة تجريبية، ادخل كلمة السّر التالية: 123456 للدخول كمشرف'),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 80.0),
+//                  Row(
+  //                  crossAxisAlignment: CrossAxisAlignment.start,
+    //                children: [
+      //                Icon(
+        //                Icons.info,
+     //                   color: AppColors.managerColor.withOpacity(0.5),
+       //               ),
+         //             const SizedBox(
+           //             width: 8.0,
+             //         ),
+   //                   SizedBox(
+       //                 width: Get.width * 0.7,
+     //                   child: const Text(
+         //                   'نظراً لأن هذه النسخة تجريبية، ادخل كلمة السّر التالية: 123456 للدخول كمشرف'),
+           //           ),
+             //       ],
+               //   ),
+                  const SizedBox(height: 128.0),
                   Obx(
                     () => CustomButton(
                         text: controller.isLoading.value ? null : 'دخول',

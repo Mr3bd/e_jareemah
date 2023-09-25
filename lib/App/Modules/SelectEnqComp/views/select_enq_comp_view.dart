@@ -55,7 +55,7 @@ class SelectEnqCompView extends GetView<SelectEnqCompController> {
                       height: 64.0,
                     ),
                     SelectServiceItem(
-                      icon: 'report',
+                      icon: 'shakwa',
                       label: 'شكوى',
                       onTap: () {
                         Get.to(() => const ComplaintView(),
@@ -64,7 +64,7 @@ class SelectEnqCompView extends GetView<SelectEnqCompController> {
                     ),
                     SelectServiceItem(
                       icon: 'complaint',
-                      label: 'إستعلام',
+                      label: 'استعلام',
                       onTap: () {
                         Get.to(() => const EnquireComplaintView(),
                             binding: EnquireComplaintBinding());
