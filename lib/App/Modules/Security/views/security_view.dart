@@ -18,7 +18,7 @@ class SecurityView extends GetView<SecurityController> {
         backgroundColor: AppColors.primaryBackground,
         appBar: AppBar(
           title: Text(
-            'الحماية',
+            'حماية',
             style: Get.textTheme.headlineMedium!
                 .copyWith(fontWeight: FontWeight.bold),
           ),

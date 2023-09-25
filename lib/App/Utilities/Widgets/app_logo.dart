@@ -25,14 +25,14 @@ class AppLogo extends StatelessWidget {
                   height: 136,
                 ),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Image.asset(
-                  'assets/images/heptagram.png',
-                  width: 48,
-                  height: 48,
-                ),
-              )
+             // Align(
+               // alignment: Alignment.center,
+           //     child: Image.asset(
+             //     'assets/images/heptagram.png',
+              //    width: 48,
+              //    height: 48,
+              //  ),
+             // )
             ],
           ),
         ),

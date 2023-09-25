@@ -19,7 +19,7 @@ class ChartView extends GetView<ChartController> {
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
         title: Text(
-          'بيانات',
+          'إحصائيّات',
           style: Get.textTheme.headlineMedium!
               .copyWith(fontWeight: FontWeight.bold),
         ),
