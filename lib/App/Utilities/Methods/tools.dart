@@ -157,4 +157,48 @@ class AppTools {
     randomID = randomFirst + randomSecond;
     return randomID;
   }
+    void showAPI(Color themeColor) {
+    showDialog(
+      context: Get.context!,
+      builder: (context) => AlertDialog(
+        
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+                       'assets/icons/google.png',
+                      width: Get.width * 0.15,
+                     ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Text(
+             'يتم تقييم الروابط بواسطة جوجل API v4 من خلال البحث في قواعد بيانات خاصة تحتوي على المواقع الخبيثة',
+              style: Get.textTheme.labelLarge,
+            )
+          ],
+        ),
+        actionsAlignment: MainAxisAlignment.center,
+        shape: const RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.all(Radius.circular(AppStyles.borderRadius))),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Container(
+              color: themeColor,
+              padding: const EdgeInsets.all(14),
+              child: Text(
+                "رجوع",
+                style:
+                    Get.textTheme.titleMedium!.copyWith(color: AppColors.white),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
