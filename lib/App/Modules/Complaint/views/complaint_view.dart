@@ -35,10 +35,13 @@ class ComplaintView extends GetView<ComplaintController> {
           ),
         ),
       ),
-      body: SizedBox(
+      
+          body: SizedBox(
+            
         width: double.infinity,
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
+          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
