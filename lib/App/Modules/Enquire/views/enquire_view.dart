@@ -52,7 +52,7 @@ class EnquireView extends GetView<EnquireController> {
               ),
               GestureDetector(
                 onTap: () async {
-                  await appTools.openMap(context, 31.9588028, 35.915063);
+                  await appTools.openMap(context, 31.9589948, 35.9173994);
                 },
                 child: Container(
                   width: Get.width,

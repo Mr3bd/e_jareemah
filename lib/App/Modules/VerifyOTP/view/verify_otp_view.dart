@@ -49,6 +49,7 @@ class VerifyOTPView extends GetView<VerifyOTPController> {
             SizedBox(height: Get.height * 0.05),
             Text(
               'أدخل الرقم المُرسَل على ال SMS',
+              textAlign: TextAlign.center,
               style: Get.textTheme.headlineSmall!
                   .copyWith(color: AppColors.darkBlue),
             ),

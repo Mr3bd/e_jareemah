@@ -1,3 +1,5 @@
+import 'package:e_jareemah/App/Modules/AboutUs/binding/about_us_binding.dart';
+import 'package:e_jareemah/App/Modules/AboutUs/views/about_us_view.dart';
 import 'package:e_jareemah/App/Modules/Dashboard/controller/dashboard_controller.dart';
 import 'package:e_jareemah/App/Modules/PDFViewer/pdf_viewer.dart';
 import 'package:e_jareemah/App/Modules/SignIn/binding/signin_binding.dart';
@@ -84,6 +86,12 @@ class MainDrawer extends GetView<DashboardController> {
                                 binding: EnquireBinding());
                           }),
                       DrawerListItem(
+                          label: 'من نحن',
+                          onTap: () {
+                            Get.to(() => const AboutUsView(),
+                                binding: AboutUsBinding());
+                          }),
+                      DrawerListItem(
                           label: 'خروج',
                           onTap: () async {
                             await controller.authManager.logOut();
@@ -92,13 +100,23 @@ class MainDrawer extends GetView<DashboardController> {
                           }),
                     ],
                   )
-                : DrawerListItem(
-                    label: 'خروج',
-                    onTap: () async {
-                      await controller.authManager.logOut();
-                      Get.off(() => const ManagerSignInView(),
-                          binding: ManagerSignInBinding());
-                    }),
+                : Column(
+                    children: [
+                      DrawerListItem(
+                          label: 'من نحن',
+                          onTap: () {
+                            Get.to(() => const AboutUsView(),
+                                binding: AboutUsBinding());
+                          }),
+                      DrawerListItem(
+                          label: 'خروج',
+                          onTap: () async {
+                            await controller.authManager.logOut();
+                            Get.off(() => const ManagerSignInView(),
+                                binding: ManagerSignInBinding());
+                          }),
+                    ],
+                  ),
           ],
         ),
       ),

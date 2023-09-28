@@ -34,24 +34,19 @@ class SecurityView extends GetView<SecurityController> {
               color: Colors.black54,
             ),
           ),
-          
           actions: [
             InkWell(
-             onTap: () =>
-                            appTools.showAPI(AppColors.primary),
-                        child: Row(
-                        
-                          children: [
-                            
-                            Icon(
-                              Icons.info_outline,
-                              color: Colors.black54,
-                              size: 35,
-                              
-                            ),
-                          ],
-          ),
-            ),
+              onTap: () => appTools.showAPI(AppColors.primary),
+              child: const Row(
+                children: [
+                  Icon(
+                    Icons.info_outline,
+                    color: Colors.black54,
+                    size: 35,
+                  ),
+                ],
+              ),
+            ).marginSymmetric(horizontal: 12.0),
           ],
         ),
         body: Obx(
@@ -83,22 +78,22 @@ class SecurityView extends GetView<SecurityController> {
                   const SizedBox(
                     height: 24.0,
                   ),
-                 // Row(
-                 //   crossAxisAlignment: CrossAxisAlignment.start,
-               //     children: [
-             //         Image.asset(
-                   //     'assets/icons/google.png',
-                 //       width: Get.width * 0.1,
-               //       ),
-             //         const SizedBox(width: 8.0),
-           //           Expanded(
-         //               child: Text(
-                   //       'يتم تقييم الروابط بواسطة جوجل API v4 من خلال البحث في قواعد بيانات خاصة تحتوي على المواقع الخبيثة',
-                 //         style: Get.textTheme.labelLarge,
-               //         ),
-             //         ),
-           //         ],
-               //   ),
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //         Image.asset(
+                  //     'assets/icons/google.png',
+                  //       width: Get.width * 0.1,
+                  //       ),
+                  //         const SizedBox(width: 8.0),
+                  //           Expanded(
+                  //               child: Text(
+                  //       'يتم تقييم الروابط بواسطة جوجل API v4 من خلال البحث في قواعد بيانات خاصة تحتوي على المواقع الخبيثة',
+                  //         style: Get.textTheme.labelLarge,
+                  //         ),
+                  //         ),
+                  //         ],
+                  //   ),
                   const SizedBox(
                     height: 24.0,
                   ),

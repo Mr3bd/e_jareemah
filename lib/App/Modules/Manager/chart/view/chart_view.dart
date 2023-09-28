@@ -54,7 +54,9 @@ class ChartView extends GetView<ChartController> {
                           dataLabelMapper: (ChartData data, _) =>
                               data.y == 0.0 ? null : data.x,
                           dataLabelSettings: const DataLabelSettings(
-                              isVisible: true, showZeroValue: false),
+                            isVisible: false,
+                            showZeroValue: false,
+                          ),
                         )
                       ]),
               ),
