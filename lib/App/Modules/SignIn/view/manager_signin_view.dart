@@ -56,7 +56,12 @@ class ManagerSignInView extends GetView<ManagerSignInController> {
                       decoration: InputDecoration(
                         fillColor: AppColors.grey.withOpacity(0.1),
                         filled: true,
-                        hintText: "كلمة السر للجهة الأمنيّة",
+                        hintText: "كلمة السر: 123456",
+                        label: Text(
+                          "كلمة السر للجهة الأمنيّة",
+                          style: Get.textTheme.labelLarge!
+                              .copyWith(color: AppColors.grey),
+                        ),
                         hintStyle: const TextStyle(
                           color: AppColors.grey,
                         ),
@@ -79,22 +84,22 @@ class ManagerSignInView extends GetView<ManagerSignInController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                  //    GestureDetector(
-                    //    onTap: () => appTools
+                      //    GestureDetector(
+                      //    onTap: () => appTools
                       //      .showEncryptionDialog(AppColors.managerColor),
-                       // child: Row(
-   //                       children: [
-     //                       Icon(
-       //                       Icons.lock_person,
-         //                     color: AppColors.managerColor.withOpacity(0.5),
-           //                 ),
-             //               const SizedBox(
-               //               width: 8.0,
-                 //           ),
-                   //         const Text('جميع البيانات مشفرة'),
-                     //     ],
-                       // ),
-                  //    ),
+                      // child: Row(
+                      //                       children: [
+                      //                       Icon(
+                      //                       Icons.lock_person,
+                      //                     color: AppColors.managerColor.withOpacity(0.5),
+                      //                 ),
+                      //               const SizedBox(
+                      //               width: 8.0,
+                      //           ),
+                      //         const Text('جميع البيانات مشفرة'),
+                      //     ],
+                      // ),
+                      //    ),
                       GestureDetector(
                           onTap: () => Get.off(() => const SignInView(),
                               binding: SignInBinding()),
@@ -107,22 +112,22 @@ class ManagerSignInView extends GetView<ManagerSignInController> {
                     height: 32.0,
                   ),
 //                  Row(
-  //                  crossAxisAlignment: CrossAxisAlignment.start,
-    //                children: [
-      //                Icon(
-        //                Icons.info,
-     //                   color: AppColors.managerColor.withOpacity(0.5),
-       //               ),
-         //             const SizedBox(
-           //             width: 8.0,
-             //         ),
-   //                   SizedBox(
-       //                 width: Get.width * 0.7,
-     //                   child: const Text(
-         //                   'نظراً لأن هذه النسخة تجريبية، ادخل كلمة السّر التالية: 123456 للدخول كمشرف'),
-           //           ),
-             //       ],
-               //   ),
+                  //                  crossAxisAlignment: CrossAxisAlignment.start,
+                  //                children: [
+                  //                Icon(
+                  //                Icons.info,
+                  //                   color: AppColors.managerColor.withOpacity(0.5),
+                  //               ),
+                  //             const SizedBox(
+                  //             width: 8.0,
+                  //         ),
+                  //                   SizedBox(
+                  //                 width: Get.width * 0.7,
+                  //                   child: const Text(
+                  //                   'نظراً لأن هذه النسخة تجريبية، ادخل كلمة السّر التالية: 123456 للدخول كمشرف'),
+                  //           ),
+                  //       ],
+                  //   ),
                   const SizedBox(height: 128.0),
                   Obx(
                     () => CustomButton(
