@@ -29,7 +29,7 @@
       </queries>
 
     <application
-        android:label="e_jareemah"
+        android:label="جريمة"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
