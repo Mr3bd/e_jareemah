@@ -292,7 +292,7 @@ class ComplaintView extends GetView<ComplaintController> {
                     Center(
                       child: Obx(
                         () => CustomButton(
-                            text: controller.isLoading.value ? null : 'ارسال',
+                            text: controller.isLoading.value ? null : 'إرسال',
                             onTap: controller.isLoading.value
                                 ? () {}
                                 : () => controller.sendComplaint(),

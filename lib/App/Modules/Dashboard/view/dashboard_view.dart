@@ -133,7 +133,7 @@ class DashboardView extends GetView<DashboardController> {
                                     },
                                   ),
                                   HomeGridItem(
-                                    label: 'إستفسار',
+                                    label: 'استفسار',
                                     icon: 'enquire',
                                     onTap: () {
                                       Get.to(() => const EnquireView(),
