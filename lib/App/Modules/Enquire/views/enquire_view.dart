@@ -16,7 +16,7 @@ class EnquireView extends GetView<EnquireController> {
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
         title: Text(
-          'الإستفسارات',
+          'الاستفسارات',
           style: Get.textTheme.headlineMedium!
               .copyWith(fontWeight: FontWeight.bold),
         ),

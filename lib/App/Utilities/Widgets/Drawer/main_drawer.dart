@@ -80,7 +80,7 @@ class MainDrawer extends GetView<DashboardController> {
                                 binding: SecurityBinding());
                           }),
                       DrawerListItem(
-                          label: 'الإستفسار',
+                          label: 'الاستفسار',
                           onTap: () {
                             Get.to(() => const EnquireView(),
                                 binding: EnquireBinding());
